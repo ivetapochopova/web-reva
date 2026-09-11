@@ -21,7 +21,8 @@ ErrorDocument 404 /404.html
     RewriteEngine On
     RewriteBase /
 
-    # 1. Přesměrování www -> bez www (pro revaharibala.cz)
+    # 1. Přesměrování na https:// a zároveň www -> bez www (pro revaharibala.cz)
+    RewriteCond %{HTTPS} off [OR]
     RewriteCond %{HTTP_HOST} ^www\.revaharibala\.cz$ [NC]
     RewriteRule ^(.*)$ https://revaharibala.cz/$1 [L,R=301]
 

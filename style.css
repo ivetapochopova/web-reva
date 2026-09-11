@@ -1282,7 +1282,7 @@ ul, ol { list-style: none; }
 /* Portrait hero photo cropped into the wide split-grid frame: keep the   */
 /* face/subject centred and near the top so the crop favours the desk    */
 /* clutter below rather than cutting into the face.                      */
-.moj-pristup-hero-img {
+.muj-pristup-hero-img {
   object-position: 50% 18%;
 }
 

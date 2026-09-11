@@ -6,7 +6,7 @@ Réva pomáhá lidem, kteří už zkusili ledacos, ale stále nemají jistotu p�
 
 ## Hlavní stránky
 - [/](https://revaharibala.cz/): Hlavní přehled služeb a filozofie bezpečné angličtiny.
-- [/moj-pristup](https://revaharibala.cz/moj-pristup): Podrobný popis metodiky a odstraňování bloků.
+- [/muj-pristup](https://revaharibala.cz/muj-pristup): Podrobný popis metodiky a odstraňování bloků.
 - [/programy](https://revaharibala.cz/programy): Nabídka konzultací a vzdělávacích programů.
 - [/o-mne](https://revaharibala.cz/o-mne): Příběh Révy, zkušenosti a certifikace.
 - [/reference](https://revaharibala.cz/reference): Příběhy a zkušenosti klientů.
