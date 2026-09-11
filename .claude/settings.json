@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Start-Process \"c:\\\\VC weby\\\\reva\\\\web reva\\\\index.html\")",
+      "Bash(start \"\" \"c:\\\\VC weby\\\\reva\\\\web reva\\\\rezervovat-konzultaci.html\")",
+      "Bash(start \"\" \"c:\\\\VC weby\\\\reva\\\\web reva\\\\o-mne.html\")",
+      "Bash(command -v chromium-cli)",
+      "Bash(command -v python)",
+      "Bash(command -v python3)",
+      "Bash(command -v npx)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"c:\\\\VC weby\\\\reva\\\\web reva\\\\obrazky\\\\Reva hero.png\"\\); \"$\\($img.Width\\) x $\\($img.Height\\)\"; $img.Dispose\\(\\))",
+      "WebSearch",
+      "WebFetch(domain:www.eleken.co)",
+      "Bash(chromium-cli --session reva)",
+      "Bash(ls -la \"/c/Program Files \\(x86\\)/Microsoft/Edge/Application/\" 2>&1 | head; ls -la \"/c/Program Files/Google/Chrome/Application/\" 2>&1 | head)",
+      "Read(//c/Program Files \\\\\\(x86\\\\\\)/Microsoft/Edge/Application//**)",
+      "Read(//c/Program Files/Google/Chrome/Application//**)",
+      "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless=new --disable-gpu --no-sandbox '--screenshot=C:\\\\Users\\\\iveta\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--VC-weby-reva-web-reva\\\\be6e6789-d2f6-442b-8efe-cd59a1543e05\\\\scratchpad\\\\hero-desktop.png' --window-size=1440,900 --hide-scrollbars http://localhost:8123/index.html)",
+      "Read(//c/Users/iveta/AppData/Local/Temp/claude/c--VC-weby-reva-web-reva/be6e6789-d2f6-442b-8efe-cd59a1543e05/scratchpad//**)",
+      "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless=new --disable-gpu --no-sandbox '--screenshot=C:\\\\Users\\\\iveta\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--VC-weby-reva-web-reva\\\\be6e6789-d2f6-442b-8efe-cd59a1543e05\\\\scratchpad\\\\hero-mobile.png' --window-size=390,844 --hide-scrollbars http://localhost:8123/index.html)",
+      "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless=new --disable-gpu --no-sandbox '--screenshot=C:\\\\Users\\\\iveta\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--VC-weby-reva-web-reva\\\\be6e6789-d2f6-442b-8efe-cd59a1543e05\\\\scratchpad\\\\hero-mobile2.png' --window-size=390,1600 --hide-scrollbars http://localhost:8123/index.html)"
+    ]
+  }
+}

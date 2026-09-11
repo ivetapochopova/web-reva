@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start \"\" \"c:/VC weby/reva/web reva/moj-pristup.html\")",
+      "Bash(grep -n 'href=\"/\\\\|href=\"index.html\\\\|nav-link' \"/c/VC weby/reva/web reva/o-mne.html\")",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(chromium-cli --help)",
+      "Bash(nohup python -m http.server 8934)",
+      "Bash(disown)",
+      "Bash(timeout 15 bash -c 'until curl -sf http://localhost:8934/index.html >/dev/null; do sleep 1; done')",
+      "Bash(cat /tmp/server.log; which python python3 2>/dev/null; python --version 2>&1; python3 --version 2>&1)",
+      "Read(//tmp/**)",
+      "Bash(npx --version)",
+      "PowerShell(Get-Command node -ErrorAction SilentlyContinue; Get-Command python -ErrorAction SilentlyContinue; $PSVersionTable.PSVersion)",
+      "Bash(which chromium-cli *)",
+      "Read(//c/Users/iveta/AppData/Local/Microsoft/WindowsApps//**)",
+      "Bash(start \"\" \"index.html\")"
+    ]
+  }
+}
