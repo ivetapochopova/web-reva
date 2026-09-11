@@ -496,7 +496,7 @@ ul, ol { list-style: none; }
   .hero-bg-img {
     width: 100%;
     height: 100%;
-    object-position: 50% 0%;
+    object-position: 50% 20%;
   }
 
   .hero-overlay {
@@ -524,6 +524,15 @@ ul, ol { list-style: none; }
 @media (max-width: 992px) {
   .hero-content {
     max-width: 760px;
+  }
+
+  .hero-content .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-content .btn-group .btn {
+    width: 100%;
   }
 }
 
@@ -776,6 +785,16 @@ ul, ol { list-style: none; }
   text-align: center;
 }
 
+@media (max-width: 992px) {
+  /* .approach-section > .container is widened to 100% (below), so on
+     mobile — where approach-content's max-width exceeds the viewport —
+     this is the only thing keeping its text off the screen edges. */
+  .approach-content {
+    padding-left: calc((100% - var(--container-width)) / 2);
+    padding-right: calc((100% - var(--container-width)) / 2);
+  }
+}
+
 .approach-content h1,
 .approach-content h2,
 .approach-content p {
@@ -845,6 +864,15 @@ ul, ol { list-style: none; }
 .faq-hero-img {
   object-fit: contain;
   object-position: 100% 50%;
+}
+
+@media (max-width: 992px) {
+  /* Stacked below the accordion on mobile: match the other pages' full-bleed
+     photo treatment instead of the desktop "shown whole" letterboxing. */
+  .faq-hero-img {
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
 }
 
 .about-photo-paticka {
@@ -1070,6 +1098,7 @@ ul, ol { list-style: none; }
 
   .faq-contact-cta-layout .btn {
     justify-self: start;
+    margin-left: clamp(1.5rem, 6vw, 6rem);
   }
 }
 
@@ -1106,6 +1135,7 @@ ul, ol { list-style: none; }
   .story-timeline-wrap .story-block-body {
     grid-template-columns: 1fr;
     gap: var(--space-5);
+    margin-top: var(--space-5);
   }
 
   .story-timeline-wrap .story-block-body p {
@@ -1286,6 +1316,19 @@ ul, ol { list-style: none; }
   object-position: 50% 18%;
 }
 
+@media (max-width: 992px) {
+  .muj-pristup-hero-img {
+    object-position: 50% 6%;
+  }
+
+  /* The image comes before the content on this page (unlike faq/o-mne,
+     where content is first), so it already clears the fixed header —
+     the header-offset padding-top on top of that would double the gap. */
+  .about-split-image + .header-offset-top.about-split-content {
+    padding-top: var(--space-6) !important;
+  }
+}
+
 /* Consistent gap between fixed nav and page H1 — used on all inner pages */
 .header-offset-top {
   padding-top: calc(84px + var(--space-8)) !important;
@@ -1451,6 +1494,19 @@ ul, ol { list-style: none; }
 .timeline-heading h2 {
   text-align: center;
   margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .timeline-heading {
+    text-align: left;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .timeline-heading h2 {
+    text-align: left;
+  }
 }
 
 .timeline {
@@ -1667,6 +1723,15 @@ ul, ol { list-style: none; }
   letter-spacing: 0.08em;
 }
 
+@media (max-width: 768px) {
+  .programy-hero-cta {
+    flex: 0 1 auto;
+    max-width: 240px;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
 .programy-hero-cta-ghost {
   background-color: var(--gold-ghost);
   color: var(--color-gold);
@@ -1771,6 +1836,10 @@ ul, ol { list-style: none; }
   margin-top: var(--space-7);
 }
 
+.program-intro + .program-structure {
+  margin-top: var(--space-5);
+}
+
 .program-structure + .program-structure {
   margin-top: var(--space-6);
 }
@@ -1819,21 +1888,31 @@ ul, ol { list-style: none; }
 }
 
 .program-feature {
-  display: flex;
-  gap: var(--space-4);
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-4);
+}
+
+/* Lets the h3/p pair act as direct grid items of .program-feature, so the
+   icon can be centered on the title's row alone instead of the whole block. */
+.program-feature > div {
+  display: contents;
 }
 
 .program-feature-icon {
-  flex-shrink: 0;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  justify-self: center;
   width: var(--icon-size-md);
-  text-align: center;
   font-size: var(--icon-size-md);
   color: var(--color-gold);
-  margin-top: 0.2em;
+  margin-top: -0.1em;
 }
 
 .program-feature-title {
+  grid-column: 2;
+  grid-row: 1;
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: calc(var(--font-size-body) * 1.35);
@@ -1841,6 +1920,8 @@ ul, ol { list-style: none; }
 }
 
 .program-feature-text {
+  grid-column: 2;
+  grid-row: 2;
   font-size: var(--font-size-body);
   line-height: 1.7;
   margin-bottom: 0;
@@ -1925,6 +2006,12 @@ ul, ol { list-style: none; }
 .step-title {
   font-size: var(--font-size-body);
   margin-bottom: var(--space-2);
+}
+
+@media (max-width: 768px) {
+  .step-number {
+    align-items: flex-start;
+  }
 }
 
 .step-text {
@@ -2066,6 +2153,23 @@ ul, ol { list-style: none; }
 }
 
 /* ---- Phonetic reference tables ---- */
+.phonetic-table-scroll-hint {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .phonetic-table-scroll-hint { display: flex; }
+  .phonetic-table-scroll-hint + .phonetic-table-wrap { margin-top: var(--space-2); }
+}
+
 .phonetic-table-wrap {
   overflow-x: auto;
   margin-top: var(--space-6);
@@ -2122,9 +2226,9 @@ ul, ol { list-style: none; }
 
 /* ---- Free resource teaser card (links to /tipy-zdarma) ---- */
 .resource-teaser {
-  display: flex;
-  align-items: center;
-  gap: var(--space-5);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: var(--space-5);
   max-width: 760px;
   margin: 0 auto;
   border: 1px solid var(--color-gold);
@@ -2138,14 +2242,17 @@ ul, ol { list-style: none; }
 }
 
 .resource-teaser-icon {
-  flex-shrink: 0;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
   font-size: var(--icon-size-lg);
   color: var(--color-gold);
 }
 
+/* Lets the title/text pair act as direct grid items of .resource-teaser, so the
+   icon can be centered on the title's row alone instead of the whole block. */
 .resource-teaser-content {
-  flex: 1;
-  min-width: 0;
+  display: contents;
 }
 
 .resource-teaser-eyebrow {
@@ -2159,6 +2266,8 @@ ul, ol { list-style: none; }
 }
 
 .resource-teaser-title {
+  grid-column: 2;
+  grid-row: 1;
   font-size: var(--font-size-body);
   font-weight: 400;
   text-transform: uppercase;
@@ -2166,16 +2275,19 @@ ul, ol { list-style: none; }
 }
 
 .resource-teaser-text {
+  grid-column: 2;
+  grid-row: 2;
   font-size: var(--font-size-body);
   opacity: 0.85;
   margin-bottom: 0;
 }
 
 .resource-teaser-arrow {
-  flex-shrink: 0;
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  align-self: center;
   color: var(--color-gold);
   font-size: var(--icon-size-md);
-  margin-left: auto;
   transition: var(--transition-smooth);
 }
 
@@ -2185,7 +2297,6 @@ ul, ol { list-style: none; }
 
 @media (max-width: 576px) {
   .resource-teaser {
-    flex-wrap: wrap;
     padding: var(--space-5);
   }
   .resource-teaser-arrow { display: none; }
@@ -2318,9 +2429,17 @@ ul, ol { list-style: none; }
 
 @media (max-width: 768px) {
   .footer-top {
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "photo nav"
+      "brand brand";
+    align-items: start;
     gap: var(--space-5);
+  }
+
+  .footer-photo {
+    grid-area: photo;
   }
 
   .footer-photo-img {
@@ -2329,9 +2448,22 @@ ul, ol { list-style: none; }
   }
 
   .footer-nav {
+    grid-area: nav;
     justify-content: flex-start;
     gap: var(--space-4);
     margin-left: 0;
+  }
+
+  .footer-brand {
+    grid-area: brand;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-brand .footer-contact {
+    align-items: center;
   }
 }
 
