@@ -1,6 +1,6 @@
 /**
  * Réva - Průvodce bezpečnou angličtinou
- * JavaScript pro interaktivitu a funkčnost Cookie lišty
+ * JavaScript pro interaktivitu webu
  */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -36,42 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 2. Cookie Banner Handling
-  const cookieBanner = document.getElementById('cookieBanner');
-  const btnAccept = document.getElementById('cookieAccept');
-  const btnReject = document.getElementById('cookieReject');
-  const btnSettings = document.getElementById('cookieSettings');
-
-  if (cookieBanner) {
-    const cookieChoice = localStorage.getItem('cookieConsent');
-    if (cookieChoice) {
-      cookieBanner.classList.add('hidden');
-    }
-
-    if (btnAccept) {
-      btnAccept.addEventListener('click', function () {
-        localStorage.setItem('cookieConsent', 'accepted');
-        cookieBanner.classList.add('hidden');
-      });
-    }
-
-    if (btnReject) {
-      btnReject.addEventListener('click', function () {
-        localStorage.setItem('cookieConsent', 'rejected');
-        cookieBanner.classList.add('hidden');
-      });
-    }
-
-    if (btnSettings) {
-      btnSettings.addEventListener('click', function () {
-        alert('Nastavení cookies: Marketingové a analytické cookies můžete kdykoliv upravit.');
-        localStorage.setItem('cookieConsent', 'settings_custom');
-        cookieBanner.classList.add('hidden');
-      });
-    }
-  }
-
-  // 3. Accordion Handler (pro FAQ sekce)
+  // 2. Accordion Handler (pro FAQ sekce)
   const accordionHeaders = document.querySelectorAll('.accordion-header');
   accordionHeaders.forEach(header => {
     header.addEventListener('click', function () {
