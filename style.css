@@ -1888,7 +1888,7 @@ ul, ol { list-style: none; }
 .program-badge-tile {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 120px;
   width: 168px;
   min-height: 108px;
   display: flex;
@@ -1899,11 +1899,7 @@ ul, ol { list-style: none; }
   padding: var(--space-4);
   background-color: var(--color-yale);
   color: var(--color-gold);
-  border: 2px solid transparent;
-  border-image: linear-gradient(135deg,
-    var(--color-gold) 0%,
-    color-mix(in srgb, var(--color-gold) 35%, var(--color-alice)) 50%,
-    var(--color-gold) 100%) 1;
+  border: 2px solid var(--color-gold);
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
   font-size: var(--font-size-caption);
@@ -1916,14 +1912,7 @@ ul, ol { list-style: none; }
 
 .program-badge-tile-icon {
   font-size: var(--icon-size-md);
-  background-image: linear-gradient(135deg,
-    var(--color-gold) 0%,
-    color-mix(in srgb, var(--color-gold) 35%, var(--color-alice)) 50%,
-    var(--color-gold) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: var(--color-gold);
 }
 
 @media (max-width: 992px) {
@@ -2679,6 +2668,13 @@ ul, ol { list-style: none; }
   margin: var(--space-3) 0 0;
   opacity: 0.6;
 }
+
+.footer-credit a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.footer-credit a:hover { color: var(--color-gold); }
 
 @media (max-width: 768px) {
   .footer-top {
