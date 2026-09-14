@@ -1889,14 +1889,14 @@ ul, ol { list-style: none; }
   position: absolute;
   top: 0;
   right: 0;
-  width: 220px;
-  min-height: 160px;
+  width: 168px;
+  min-height: 108px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-3);
-  padding: var(--space-5);
+  gap: var(--space-2);
+  padding: var(--space-4);
   background-color: var(--color-yale);
   color: var(--color-gold);
   border: 2px solid transparent;
@@ -1906,16 +1906,16 @@ ul, ol { list-style: none; }
     var(--color-gold) 100%) 1;
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
-  font-size: calc(var(--font-size-caption) * 1.1);
+  font-size: var(--font-size-caption);
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  line-height: 1.5;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
   text-align: center;
 }
 
 .program-badge-tile-icon {
-  font-size: var(--icon-size-lg);
+  font-size: var(--icon-size-md);
   background-image: linear-gradient(135deg,
     var(--color-gold) 0%,
     color-mix(in srgb, var(--color-gold) 35%, var(--color-alice)) 50%,
@@ -1937,7 +1937,7 @@ ul, ol { list-style: none; }
 
 /* ---- Program intro: single stacked column — no side rule, each fact on its own line ---- */
 .program-intro {
-  max-width: 780px;
+  max-width: 1040px;
 }
 
 .program-intro .pillar-heading {
@@ -1969,20 +1969,40 @@ ul, ol { list-style: none; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: var(--space-3);
-  max-width: 820px;
+  max-width: 1040px;
+}
+
+/* Forces a fixed 3-up grid (two rows of three) instead of auto-fitting by width */
+.program-block-chips-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .program-block-chips-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .program-block-chips-3 {
+    grid-template-columns: 1fr;
+  }
 }
 
 .program-block-chip {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  justify-content: center;
+  gap: var(--space-2);
   padding: var(--space-4);
-  border: 1px solid var(--line-on-light);
+  border: 1px solid color-mix(in srgb, var(--color-shadow) 25%, transparent);
   border-radius: var(--radius-sm);
+  text-align: center;
 }
 
 .section-yale .program-block-chip {
-  border-color: var(--line-on-dark);
+  border-color: color-mix(in srgb, var(--color-alice) 30%, transparent);
 }
 
 .program-block-chip-icon {
@@ -1994,6 +2014,7 @@ ul, ol { list-style: none; }
 .program-block-chip-text {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2px;
 }
 
@@ -2012,7 +2033,7 @@ ul, ol { list-style: none; }
 }
 
 .program-block-note {
-  max-width: 820px;
+  max-width: 1040px;
   margin-top: calc(var(--space-5) * -1 + var(--space-2));
   margin-bottom: var(--space-5);
   font-size: var(--font-size-small);
@@ -2028,7 +2049,13 @@ ul, ol { list-style: none; }
 }
 
 .program-structure + .program-structure {
-  margin-top: var(--space-6);
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line-on-light);
+}
+
+.section-yale .program-structure + .program-structure {
+  border-top-color: var(--line-on-dark);
 }
 
 /* ---- Price line: quiet investment statement between two hairlines, no boxed card ---- */
@@ -2077,7 +2104,7 @@ ul, ol { list-style: none; }
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-7);
-  max-width: 820px;
+  max-width: 1040px;
 }
 
 .program-feature {
@@ -2646,13 +2673,18 @@ ul, ol { list-style: none; }
   color: var(--muted-on-dark);
 }
 
-.footer-legal { margin: 0; }
+.footer-legal { margin: 0; line-height: 1.6; }
+
+.footer-credit {
+  margin: var(--space-3) 0 0;
+  opacity: 0.6;
+}
 
 @media (max-width: 768px) {
   .footer-top {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
     text-align: left;
     gap: var(--space-5);
   }
@@ -2698,6 +2730,10 @@ ul, ol { list-style: none; }
     font-size: 10px;
     white-space: normal;
     line-height: 1.2;
+  }
+
+  .footer-bottom {
+    text-align: center;
   }
 }
 
