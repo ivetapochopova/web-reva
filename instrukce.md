@@ -252,7 +252,7 @@ Jak moje studentka Eva popsala okamžik, kdy díky mé metodě konečně začala
 
 „Měla jsem úplnou hrůzu z toho přečíst nebo říct anglickou větu. Strašně jsem se v tom jazykovém zmatku ztrácela.
 
-Réva mě donutila uvěřit, že nevadí, když něco špatně řeknu nebo přečtu. Začaly jsme pracovat s její metodou Strukturálního mezijazyka (The Matrix Language).
+Réva mě donutila uvěřit, že nevadí, když něco špatně řeknu nebo přečtu. Začaly jsme pracovat s její metodou Strukturálního mezijazyka.
 
 Můj mozek najednou začal pracovat na té úrovni sám od sebe. Réva ho přes ten svůj mezijazyk prostě přinutila vnímat doslovný rozdíl mezi skládáním slov v češtině a angličtině, aby vnímal obrácený systém angličtiny. A já se konečně uvolnila.“
 
@@ -277,6 +277,6 @@ A možná si teď řeknete: no jo, ale ona měla vystudovanou angličtinu… I s
 
 Protože jsem celkem rebelská nátura, nedokážu moc dělat věci, které mě nebaví. Musím přijít na to, jak tu věc dělat, aby mě opravdu bavila. A bylo tomu tak i s angličtinou... kterou jsem se opravdu naučila tak, že jsem si sedla do velkého knihkupectví třeba v Chicagu nebo v Londýně, dala si kafe, přinesla si k tomu hromadu knih a časopisů a hodiny si četla o něčem, co mě doopravdy baví, a sem tam si k tomu vypisovala zajímavá slovíčka a fráze. Stejným způsobem jsem koukala na videa na YouTube nebo na filmy. Prostě to musí byt něco, co vás opravdu baví a koukáte na to ne proto, že se učíte jazyk (to je až druhotné), ale hlavně proto, že se chcete dozvědět víc o oblíbeném tématu. Jazyk je nástroj nesoucí informaci. A když už jsem opravdu musela dělat nějaká ta cvičení – na CPE (Cambridge Proficiency Exam) jich musíte udělat celkem hodně, tak to většinou bylo v mé oblíbené kavárně u oblíbeného kafíčka. Prostě to musí být příjemný zážitek.
 
-Když jsem se vrátila zpět do Čech a začala jsem učit angličtinu jako lektorka, přišla jsem brzy na to, že cesta k tomu, abych mohla svým studentům opravdu efektivně a rychle pomoct pochopit angličtinu a rozmluvit je, určitě nepovede skrze nekonečné vyplňování cvičení v učebnicích. A tak nějak intuitivně jsem přišla na svoji metodu Strukturálního mezijazyka (The Matrix Language), která se mi opravdu velmi osvědčila.
+Když jsem se vrátila zpět do Čech a začala jsem učit angličtinu jako lektorka, přišla jsem brzy na to, že cesta k tomu, abych mohla svým studentům opravdu efektivně a rychle pomoct pochopit angličtinu a rozmluvit je, určitě nepovede skrze nekonečné vyplňování cvičení v učebnicích. A tak nějak intuitivně jsem přišla na svoji metodu Strukturálního mezijazyka, která se mi opravdu velmi osvědčila.
 
 A pokud se bojíte, že se přede mnou budete bát udělat chybu, tak vždycky říkám svým novým studentům, že za těch 11 let, co učím angličtinu, jsem už slyšela vše. Pravděpodobně nemůžete udělat chybu a říct nesmysl, který jsem již neslyšela. Všichni jsme to přežili a k tomu jsme se naučili sami sobě zasmát.

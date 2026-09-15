@@ -280,6 +280,16 @@ ul, ol { list-style: none; }
   transition: transform 0.3s ease;
 }
 
+/* ---- Program CTAs: long label — wrap onto 2 lines on narrow screens
+   instead of overflowing past the container edge. ---- */
+@media (max-width: 480px) {
+  .program-cta {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+  }
+}
+
 .btn:hover .btn-arrow {
   transform: translateX(4px);
 }
@@ -485,6 +495,11 @@ ul, ol { list-style: none; }
     flex-direction: column;
     justify-content: flex-end;
     min-height: auto;
+    background: linear-gradient(
+      180deg,
+      var(--color-shadow) 0%,
+      var(--color-yale) 100%
+    );
   }
 
   /* Text first, photo below — reversed from the DOM order, which keeps
@@ -1203,6 +1218,13 @@ ul, ol { list-style: none; }
   .story-block-heading {
     padding-left: 0;
   }
+
+  /* O mně timeline: the icon medallion is anchored to this heading's own
+     left edge, so it needs its padding kept (matching the body text below)
+     instead of being zeroed like the plain pillar-page headings above. */
+  .story-timeline-wrap .story-block-heading {
+    padding-left: var(--space-5);
+  }
 }
 
 .story-block-heading h2 {
@@ -1237,7 +1259,7 @@ ul, ol { list-style: none; }
 }
 
 .story-timeline-wrap .story-block-heading {
-  position: static;
+  position: relative;
 }
 
 
@@ -1551,7 +1573,7 @@ ul, ol { list-style: none; }
 .timeline-item {
   position: relative;
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 48px minmax(0, 1fr);
   gap: var(--space-6);
   padding-bottom: var(--space-9);
 }
@@ -1642,12 +1664,17 @@ ul, ol { list-style: none; }
 
 @media (max-width: 576px) {
   .timeline-item {
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 40px minmax(0, 1fr);
     gap: var(--space-4);
     padding-bottom: var(--space-7);
   }
   .timeline-marker { width: 40px; height: 40px; font-size: var(--font-size-small); }
   .timeline-item::before { top: 40px; left: 19px; }
+
+  .timeline-content .btn-group .btn {
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 /* ==========================================
@@ -1689,7 +1716,7 @@ ul, ol { list-style: none; }
 /* ---- Three-up testimonial cards ---- */
 .testimonial-cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-6);
   align-items: stretch;
 }
@@ -2677,12 +2704,26 @@ ul, ol { list-style: none; }
 .footer-credit a:hover { color: var(--color-gold); }
 
 @media (max-width: 768px) {
+  /* Logo top-left, photo below it; tagline + contacts beside that column,
+     each centered against its row (tagline next to the logo, contacts next
+     to — and vertically centered on — the photo); nav kept full-width below. */
   .footer-top {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-5);
+    row-gap: var(--space-4);
     text-align: left;
-    gap: var(--space-5);
+  }
+
+  .footer-logo {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .footer-photo {
+    grid-column: 1;
+    grid-row: 2;
   }
 
   .footer-photo-img {
@@ -2691,19 +2732,26 @@ ul, ol { list-style: none; }
   }
 
   .footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    flex: 1;
-    min-width: 0;
+    display: contents;
+  }
+
+  .footer-brand p {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
   }
 
   .footer-brand .footer-contact {
+    grid-column: 2;
+    grid-row: 2;
     align-items: flex-start;
+    align-self: center;
+    margin-top: 0;
   }
 
   .footer-nav {
+    grid-column: 1 / 3;
+    grid-row: 3;
     width: 100%;
     flex-wrap: nowrap;
     justify-content: space-between;
