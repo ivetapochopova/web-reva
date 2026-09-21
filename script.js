@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const isOpen = navMenu.classList.contains('active');
       navToggle.setAttribute('aria-expanded', isOpen);
       navToggle.innerHTML = isOpen
-        ? '<i class="fa-solid fa-xmark"></i>'
-        : '<i class="fa-solid fa-bars"></i>';
+        ? '<i class="ph-light ph-x"></i>'
+        : '<i class="ph-light ph-list"></i>';
     });
   }
 
