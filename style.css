@@ -499,6 +499,8 @@ ul, ol { list-style: none; }
     flex-direction: column;
     justify-content: flex-end;
     min-height: auto;
+    /* Photo is the last element, so it sits flush with the section's bottom edge. */
+    padding-bottom: 0;
     background: linear-gradient(
       180deg,
       var(--color-shadow) 0%,
@@ -581,6 +583,12 @@ ul, ol { list-style: none; }
   font-weight: 400;
   color: #FFFFFF;
   line-height: 1.85;
+}
+
+/* Second sentence sits on its own line with extra space above it. */
+.hero-h2-second {
+  display: block;
+  margin-top: 0.6em;
 }
 
 /* Manual line break that only applies on desktop; on mobile the text wraps naturally. */
