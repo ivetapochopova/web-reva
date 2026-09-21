@@ -3,7 +3,8 @@
    Réva - Průvodce bezpečnou angličtinou
    ========================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Taviraj:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Quicksand:wght@300;400;500;600;700&display=swap');
+/* Web fonts (Taviraj, Quicksand) are loaded via <link> in each page's <head>
+   — an @import here would delay them behind this stylesheet. */
 
 :root {
   /* ---- Brand Colors: EXACTLY four, no additional hues, tints or shades ---- */
@@ -280,13 +281,14 @@ ul, ol { list-style: none; }
   transition: transform 0.3s ease;
 }
 
-/* ---- Program CTAs: long label — wrap onto 2 lines on narrow screens
+/* ---- Buttons: long labels wrap onto 2 lines on narrow screens
    instead of overflowing past the container edge. ---- */
 @media (max-width: 480px) {
-  .program-cta {
+  .btn {
     white-space: normal;
     text-align: center;
     line-height: 1.4;
+    max-width: 100%;
   }
 }
 
@@ -656,6 +658,35 @@ ul, ol { list-style: none; }
   margin: var(--space-4) 0;
 }
 
+/* Jeden společný graficky zvýrazněný blok „Mám pro vás řešení“ */
+.recognition-solution {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  margin: var(--space-6) 0 0;
+  padding: var(--space-5) var(--space-6);
+  background-color: var(--color-alice);
+  color: var(--color-shadow);
+  border: 1px solid var(--color-gold);
+}
+
+.recognition-solution-icon {
+  font-size: var(--icon-size-lg);
+  font-weight: 300;
+  color: var(--color-gold);
+}
+
+.recognition-solution-heading {
+  margin: 0;
+  text-align: center;
+  color: var(--color-shadow);
+}
+
+@media (max-width: 768px) {
+  .recognition-solution { flex-direction: column; gap: var(--space-3); }
+}
+
 .recognition-text {
   font-size: 1rem;
   line-height: 1.6;
@@ -724,7 +755,7 @@ ul, ol { list-style: none; }
 }
 
 .approach-btn-group {
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .problem-tagline {
@@ -906,6 +937,25 @@ ul, ol { list-style: none; }
   object-position: 100% 50%;
 }
 
+/* Desktop: pin the photo to the top of its column so it doesn't move
+   when an accordion item expands and the row grows taller. */
+@media (min-width: 993px) {
+  .faq-hero-img {
+    position: sticky;
+    inset: auto;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+  }
+
+  /* clip (not hidden) so the photo can't spill past the row but sticky still works */
+  .about-split-image:has(.faq-hero-img) {
+    overflow: clip;
+  }
+}
+
 @media (max-width: 992px) {
   /* Stacked below the accordion on mobile: match the other pages' full-bleed
      photo treatment instead of the desktop "shown whole" letterboxing. */
@@ -1066,13 +1116,17 @@ ul, ol { list-style: none; }
 .testimonial-eyebrow {
   margin-bottom: 0;
   font-family: var(--font-body);
-  font-size: calc(var(--font-size-caption) * 1.1);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  letter-spacing: normal;
   text-transform: uppercase;
   text-align: left;
-  line-height: 1.7;
-  color: var(--color-gold);
+  line-height: 1.6;
+  color: inherit;
+}
+
+.testimonial-eyebrow strong {
+  font-weight: 700;
 }
 
 /* ==========================================
@@ -1410,7 +1464,6 @@ ul, ol { list-style: none; }
   font-weight: 600;
   margin-top: var(--space-3);
 }
-
 .pillar-eyebrow {
   display: block;
   font-family: var(--font-body);
@@ -1452,7 +1505,6 @@ ul, ol { list-style: none; }
   color: inherit;
   margin-bottom: 0;
 }
-
 @media (max-width: 576px) {
   .audio-note { padding: var(--space-5); }
 }
@@ -1722,7 +1774,7 @@ ul, ol { list-style: none; }
 
 @media (max-width: 768px) {
   .testimonial-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1822,18 +1874,10 @@ ul, ol { list-style: none; }
   max-width: 900px;
 }
 
-/* ---- Light neutral dark filter, softer than the earlier version ---- */
-/* Bottom fade is deliberately long (starts at 40% of the section) so the
-   photo dissolves gradually into the dark section that follows, instead
-   of handing off in a thin, hard-edged strip. */
+/* Flat tint, no edge fade — the photo cuts off sharply where the next
+   section begins instead of dissolving into it. */
 .programy-hero .approach-overlay {
-  background: linear-gradient(
-    to bottom,
-    var(--color-shadow) 0,
-    rgba(10, 10, 10, 0.385) 40px,
-    rgba(10, 10, 10, 0.385) 40%,
-    var(--color-shadow) 100%
-  );
+  background: color-mix(in srgb, var(--color-shadow) 40%, transparent);
 }
 
 .programy-hero .approach-bg-img {
@@ -1878,39 +1922,39 @@ ul, ol { list-style: none; }
 
 .program-badge-tile {
   position: absolute;
-  top: 0;
+  top: calc(var(--space-6) * -1);
   right: 120px;
-  width: 168px;
-  min-height: 108px;
+  width: 148px;
+  aspect-ratio: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: var(--space-4);
-  background-color: var(--color-yale);
-  color: var(--color-gold);
-  border: 2px solid var(--color-gold);
-  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  background-color: var(--color-gold);
+  color: var(--color-shadow);
+  border-radius: 50%;
+  /* sticker: thin inner ring + slight tilt */
+  box-shadow: inset 0 0 0 5px var(--color-gold), inset 0 0 0 6px color-mix(in srgb, var(--color-shadow) 55%, transparent);
+  transform: rotate(-8deg);
   font-family: var(--font-body);
   font-size: var(--font-size-caption);
-  font-weight: 400;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.4;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
   text-align: center;
 }
 
 .program-badge-tile-icon {
   font-size: var(--icon-size-md);
-  color: var(--color-gold);
+  color: var(--color-shadow);
 }
 
 @media (max-width: 992px) {
   .program-badge-tile {
     position: static;
-    width: 100%;
-    min-height: auto;
     margin-bottom: var(--space-6);
   }
 }
@@ -1937,13 +1981,24 @@ ul, ol { list-style: none; }
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--color-gold);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+/* Whatever follows the label sits the same distance below it */
+.program-block-label + .pillar-subtitle,
+.program-block-label + .program-block-note {
+  margin-top: 0;
+}
+
+/* "1 mentoringový blok = 1 týden": sits right under its label, in slightly smaller type */
+.program-block-label + .program-block-note-tight {
+  margin-top: calc(var(--space-6) * -1 + var(--space-2));
+  font-size: calc(var(--font-size-body) * 0.92);
 }
 
 .section-yale .program-block-label {
   color: var(--color-gold);
 }
-
 /* ---- Small cards summarizing each block in "Struktura programu", ahead of the detailed list ---- */
 .program-block-chips {
   display: grid;
@@ -2044,7 +2099,7 @@ ul, ol { list-style: none; }
 .program-price-line {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-6);
   padding: var(--space-5) 0;
   margin-top: var(--space-6);
   border-top: 1px solid var(--line-on-light);
@@ -2072,6 +2127,7 @@ ul, ol { list-style: none; }
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.14em;
+  line-height: 1.15;
   color: var(--color-gold);
 }
 
@@ -2082,16 +2138,98 @@ ul, ol { list-style: none; }
   line-height: 1.1;
 }
 
+/* Tight line-height of the big price figure leaves less air than a text paragraph would; add it back */
+.program-price-line-label + .program-price-line-value:not(.program-price-line-value-text) {
+  margin-top: var(--space-3);
+}
+
 /* ---- Modifier: long paragraph content (e.g. "Cíl a náplň programu"), not a big price figure ---- */
 .program-price-line-value-text {
   font-family: var(--font-body);
   font-size: var(--font-size-body);
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.7;
+}
+
+.program-price-line-value-text strong {
+  font-weight: 700;
 }
 
 .program-price-line-note {
   font-size: var(--font-size-body);
+}
+
+/* Investment breakdown: heading above the chips + summer-mode callout (styled like .program-block-chip) */
+.pay-heading {
+  font-family: var(--font-body);
+  font-size: calc(var(--font-size-caption) * 1.1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: inherit;
+  opacity: 0.7;
+  margin: var(--space-5) 0 var(--space-3);
+}
+
+.pay-callout {
+  max-width: 1040px;
+  margin-top: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid color-mix(in srgb, var(--color-shadow) 25%, transparent);
+  border-radius: var(--radius-sm);
+}
+
+.section-yale .pay-callout {
+  border-color: color-mix(in srgb, var(--color-alice) 30%, transparent);
+}
+
+.pay-callout-title {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.4;
+  margin-bottom: var(--space-3);
+}
+
+.pay-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.pay-list li {
+  position: relative;
+  padding-left: var(--space-5);
+  font-size: var(--font-size-small);
+  line-height: 1.6;
+}
+
+.pay-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+}
+
+.pay-list strong { font-weight: 700; }
+
+/* Payment chips: same look as the structure chips, with a more readable caption line */
+.program-block-chips-pay .program-block-chip {
+  justify-content: flex-start;
+}
+
+.program-block-chips-pay .program-block-chip-title {
+  font-size: var(--font-size-body);
+}
+
+.program-block-chips-pay .program-block-chip-freq {
+  font-size: var(--font-size-small);
+  line-height: 1.5;
 }
 
 .program-features {
@@ -2130,7 +2268,7 @@ ul, ol { list-style: none; }
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: calc(var(--font-size-body) * 1.35);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
 }
 
 .program-feature-text {
@@ -2150,6 +2288,11 @@ ul, ol { list-style: none; }
 .program-features-flat .program-feature-title,
 .program-features-flat .program-feature-text {
   grid-column: 1;
+}
+
+/* Extra space between the block note and the first feature title */
+.program-block-note + .program-features-flat {
+  margin-top: var(--space-7);
 }
 
 /* ---- Callout that needs extra breathing room above it (used after a feature list) ---- */
@@ -2492,9 +2635,10 @@ ul, ol { list-style: none; }
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  font-family: var(--font-heading);
-  font-size: var(--font-size-body);
+  font-family: var(--font-body);
+  font-size: 0.9375rem; /* 15px — smaller than body so long questions stay compact */
   font-weight: 400;
+  text-transform: none;
   color: inherit;
   cursor: pointer;
   text-align: left;
@@ -2660,8 +2804,9 @@ ul, ol { list-style: none; }
 .resource-teaser-title {
   grid-column: 2;
   grid-row: 1;
+  font-family: var(--font-body);
   font-size: var(--font-size-body);
-  font-weight: 400;
+  font-weight: 700;
   text-transform: uppercase;
   margin-bottom: var(--space-2);
 }
@@ -2805,16 +2950,18 @@ ul, ol { list-style: none; }
 .footer-contact {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 0;
   margin-top: var(--space-4);
 }
 
+/* Vertical padding makes the tap target ~40px tall without changing the look. */
 .footer-contact a {
   color: var(--muted-on-dark);
   font-size: var(--font-size-small);
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
+  padding: var(--space-2) 0;
   white-space: nowrap;
 }
 
@@ -2917,6 +3064,13 @@ ul, ol { list-style: none; }
 
   .footer-bottom {
     text-align: center;
+  }
+}
+
+/* Slightly larger labels wherever the five nav items have room for them */
+@media (min-width: 400px) and (max-width: 768px) {
+  .footer-nav-label {
+    font-size: var(--font-size-caption);
   }
 }
 
