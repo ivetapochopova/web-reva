@@ -290,7 +290,7 @@ ul, ol { list-style: none; }
 @media (max-width: 480px) {
   .btn {
     white-space: normal;
-    text-align: center;
+    text-align: left;
     line-height: 1.4;
     max-width: 100%;
   }
@@ -2035,13 +2035,13 @@ ul, ol { list-style: none; }
   justify-content: center;
   gap: var(--space-2);
   padding: var(--space-4);
-  border: 1px solid color-mix(in srgb, var(--color-shadow) 25%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
   border-radius: var(--radius-sm);
   text-align: center;
 }
 
 .section-yale .program-block-chip {
-  border-color: color-mix(in srgb, var(--color-alice) 30%, transparent);
+  border-color: color-mix(in srgb, var(--color-gold) 45%, transparent);
 }
 
 .program-block-chip-icon {
@@ -2088,15 +2088,46 @@ ul, ol { list-style: none; }
 .program-structure + .program-structure {
   margin-top: var(--space-7);
   padding-top: var(--space-6);
-  border-top: 1px solid var(--line-on-light);
-}
-
-.section-yale .program-structure + .program-structure {
-  border-top-color: var(--line-on-dark);
 }
 
 .program-structure + .program-intro {
   margin-top: var(--space-7);
+}
+
+/* ---- Divided block: hairline sits close under the preceding paragraph, the heading follows below it.
+   Same spacing everywhere so every divider looks identical. ---- */
+.program-structure.program-divided,
+.program-intro.program-divided {
+  max-width: 1040px;
+  margin-top: var(--space-6);
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--line-on-light);
+}
+
+.section-yale .program-structure.program-divided,
+.section-yale .program-intro.program-divided {
+  border-top-color: var(--line-on-dark);
+}
+
+.program-divided > .program-block-label {
+  margin-top: 0;
+}
+
+/* Evening out the space above the line, measured from what is visible:
+   - after the intro paragraph: drop the price-line's own bottom padding
+   - after a row of bordered cards: the border edge is closer than a text baseline, so add the difference */
+.program-intro:not(.program-divided) .program-price-line:last-child {
+  padding-bottom: 0;
+}
+
+.program-structure:has(> .program-block-chips:last-child) {
+  padding-bottom: var(--space-1);
+}
+
+/* Investice: the block's own padding already provides the space below the line */
+.program-intro.program-divided .program-price-line {
+  margin-top: 0;
+  padding-top: 0;
 }
 
 /* ---- Price line: quiet investment statement between two hairlines, no boxed card ---- */
@@ -2106,22 +2137,10 @@ ul, ol { list-style: none; }
   gap: var(--space-6);
   padding: var(--space-5) 0;
   margin-top: var(--space-6);
-  border-top: 1px solid var(--line-on-light);
-  border-bottom: 1px solid var(--line-on-light);
 }
 
-.section-yale .program-price-line {
-  border-color: var(--line-on-dark);
-}
-
-/* First price line right under the heading doesn't need a line above it */
-.pillar-heading + .program-price-line {
-  border-top: none;
-}
-
-/* Stacked stat rows (Cíl + Investice) share one divider instead of drawing two lines back to back */
+/* Stacked stat rows (Cíl + Investice) sit directly under each other */
 .program-price-line + .program-price-line {
-  border-top: none;
   margin-top: 0;
 }
 
@@ -2179,12 +2198,12 @@ ul, ol { list-style: none; }
   max-width: 1040px;
   margin-top: var(--space-3);
   padding: var(--space-4) var(--space-5);
-  border: 1px solid color-mix(in srgb, var(--color-shadow) 25%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
   border-radius: var(--radius-sm);
 }
 
 .section-yale .pay-callout {
-  border-color: color-mix(in srgb, var(--color-alice) 30%, transparent);
+  border-color: color-mix(in srgb, var(--color-gold) 45%, transparent);
 }
 
 .pay-callout-title {
@@ -2362,7 +2381,7 @@ ul, ol { list-style: none; }
 
 .compare-col-featured {
   position: relative;
-  border: 2px solid var(--color-gold);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 75%, transparent);
 }
 
 .compare-featured-tag {
@@ -2640,7 +2659,7 @@ ul, ol { list-style: none; }
   justify-content: space-between;
   gap: var(--space-4);
   font-family: var(--font-body);
-  font-size: 0.9375rem; /* 15px — smaller than body so long questions stay compact */
+  font-size: var(--font-size-body);
   font-weight: 400;
   text-transform: none;
   color: inherit;
@@ -2661,7 +2680,7 @@ ul, ol { list-style: none; }
   padding: 0 0 var(--space-5) 0;
   display: none;
   color: var(--muted-on-light);
-  font-size: var(--font-size-small);
+  font-size: 0.9375rem; /* 15px */
 }
 
 .accordion-item.active .accordion-content { display: block; }
