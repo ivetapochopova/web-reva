@@ -886,17 +886,27 @@ ul, ol { list-style: none; }
   margin-bottom: var(--space-3);
 }
 
+/* Closing gold caps line of the hero on Programy, Reference and Rezervovat
+   konzultaci — one shared style so all three sit identically. */
+.programy-method-text,
+.reference-tagline,
 .free-lesson-badge {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  margin-top: var(--space-4);
-  color: var(--color-gold);
-  font-family: var(--font-body);
-  font-size: calc(var(--font-size-caption) * 1.1);
-  font-weight: 600;
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 16px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--color-gold);
+  max-width: 70ch;
+  margin: var(--space-6) auto 0;
+}
+
+/* Programy's lead has a tight line-height (1.1) vs 1.85 on the other two,
+   so it needs a little extra top margin to keep the visual gap equal. */
+.programy-hero .programy-method-text {
+  margin-top: calc(var(--space-6) + 0.4em);
 }
 
 /* ==========================================
@@ -1737,6 +1747,13 @@ ul, ol { list-style: none; }
   max-width: 900px;
 }
 
+/* Long intro sentence: narrow measure so it wraps to 3–4 centred lines. */
+.reference-hero .lead {
+  max-width: 62ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ---- Flat neutral dark tint (no gradient) for text legibility over the photo ---- */
 .reference-hero .approach-overlay {
   /* True neutral black, not the brand's blue-leaning --color-shadow — keeps
@@ -1889,21 +1906,6 @@ ul, ol { list-style: none; }
   font-weight: 400;
   color: var(--color-alice);
   max-width: 46ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.programy-method-text {
-  font-family: var(--font-heading);
-  font-weight: 400;
-  font-size: var(--font-size-body);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height: 1.4;
-  color: var(--color-alice);
-  max-width: 70ch;
-  margin-top: var(--space-5);
-  margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
 }
