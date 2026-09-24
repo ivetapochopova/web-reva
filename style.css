@@ -495,78 +495,49 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 992px) {
-  /* Mobile: the photo sits behind the top of the hero, full width, and fades
-     into the dark background; the text block overlaps its faded lower part,
-     so the face and the headline are both on the first screen. */
   .hero-section {
-    /* Photo height shrinks on short screens (cropped from the bottom) so the
-       headline, text and both CTAs fit on the first screen. The reserve is
-       the header plus the text block, minus the part that overlaps the photo. */
-    --hero-photo-h: max(220px, min(112vw, 640px, calc(100svh - 395px)));
-    /* Height of the fixed site header, so the photo starts below it. */
-    --hero-photo-top: 84px;
-    /* How far the text block reaches up over the photo's faded bottom. */
-    --hero-photo-overlap: 45px;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-end;
     min-height: auto;
-    padding-top: 0;
-    padding-bottom: var(--space-8);
-    background: var(--color-shadow);
+    /* Photo is the last element, so it sits flush with the section's bottom edge. */
+    padding-bottom: 0;
+    background: linear-gradient(
+      180deg,
+      var(--color-shadow) 0%,
+      var(--color-yale) 55%,
+      color-mix(in srgb, var(--color-yale) 65%, var(--color-alice) 35%) 100%
+    );
+  }
+
+  /* Text first, photo below — reversed from the DOM order, which keeps
+     the photo markup first for desktop's side-by-side layout. */
+  .hero-content-wrapper {
+    order: 1;
   }
 
   .hero-bg-container {
-    position: absolute;
-    inset: var(--hero-photo-top) 0 auto 0;
-    height: var(--hero-photo-h);
-    z-index: 1;
-    justify-content: center;
-  }
-
-  /* Zoomed out: the photo is narrower than the screen so more of it fits,
-     and its left/right edges fade into the dark background. Shifting it up
-     trims the empty wall above the head. */
-  .hero-bg-img {
-    --hero-photo-w: 76vw;
-    width: var(--hero-photo-w);
-    height: 100%;
-    object-position: 50% calc(var(--hero-photo-w) * -0.12);
-    /* Eased stops so the edge fades softly instead of in a visible band. */
-    --hero-photo-fade: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.08) 5%,
-      rgba(0, 0, 0, 0.25) 11%,
-      rgba(0, 0, 0, 0.5) 18%,
-      rgba(0, 0, 0, 0.75) 25%,
-      rgba(0, 0, 0, 0.92) 31%,
-      #000 36%,
-      #000 64%,
-      rgba(0, 0, 0, 0.92) 69%,
-      rgba(0, 0, 0, 0.75) 75%,
-      rgba(0, 0, 0, 0.5) 82%,
-      rgba(0, 0, 0, 0.25) 89%,
-      rgba(0, 0, 0, 0.08) 95%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    -webkit-mask-image: var(--hero-photo-fade);
-    mask-image: var(--hero-photo-fade);
-  }
-
-  .hero-overlay {
-    inset: var(--hero-photo-top) 0 auto 0;
-    height: var(--hero-photo-h);
+    order: 2;
+    position: relative;
+    inset: auto;
     z-index: 2;
-    background: linear-gradient(
-      180deg,
-      transparent calc(100% - var(--hero-photo-overlap) - 70px),
-      color-mix(in srgb, var(--color-shadow) 65%, transparent) calc(100% - var(--hero-photo-overlap)),
-      var(--color-shadow) calc(100% - 10px)
-    );
+    justify-content: center;
+    align-items: stretch;
+    align-self: stretch;
+    width: 100%;
+    height: min(52vh, 460px);
+    margin-top: var(--space-6);
+    margin-bottom: 0;
   }
 
-  .hero-content-wrapper {
-    padding-top: calc(var(--hero-photo-top) + var(--hero-photo-h) - var(--hero-photo-overlap));
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-position: 50% 20%;
+  }
+
+  /* No overlay on mobile so the section's top-to-bottom gradient shows through. */
+  .hero-overlay {
+    background: none;
   }
 }
 
@@ -593,33 +564,39 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 992px) {
+  /* Mobile: tighter spacing so the headline, text and both CTAs fit on the
+     first screen; the photo follows below. */
+  .hero-section {
+    padding-top: calc(84px + var(--space-6));
+  }
+
   .hero-content {
     max-width: 760px;
     margin-top: 0;
   }
 
+  .hero-content .hero-h1 {
+    margin-bottom: var(--space-5);
+  }
+
+  .hero-content .hero-h2 {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.6;
+  }
+
+  .hero-content .hero-h2-second {
+    margin-top: 0.4em;
+  }
+
   .hero-content .btn-group {
     flex-direction: column;
     align-items: stretch;
-    margin-top: var(--space-5);
+    gap: var(--space-3);
+    margin-top: var(--space-6);
   }
 
   .hero-content .btn-group .btn {
     width: 100%;
-  }
-
-  .hero-content .hero-h1 {
-    font-size: clamp(1.75rem, 6.5vw, 2.4rem);
-    margin-bottom: var(--space-4);
-  }
-
-  .hero-content .hero-h2 {
-    font-size: 1.0625rem;
-    line-height: 1.55;
-  }
-
-  .hero-content .hero-h2-second {
-    margin-top: 0;
   }
 }
 
