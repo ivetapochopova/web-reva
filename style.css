@@ -520,14 +520,37 @@ ul, ol { list-style: none; }
     inset: var(--hero-photo-top) 0 auto 0;
     height: var(--hero-photo-h);
     z-index: 1;
+    justify-content: center;
   }
 
-  /* Image is scaled to full width; shifting it up trims the empty wall above
-     the head so the face stays clear of the text on short screens. */
+  /* Zoomed out: the photo is narrower than the screen so more of it fits,
+     and its left/right edges fade into the dark background. Shifting it up
+     trims the empty wall above the head. */
   .hero-bg-img {
-    width: 100%;
+    --hero-photo-w: 84vw;
+    width: var(--hero-photo-w);
     height: 100%;
-    object-position: 50% -15vw;
+    object-position: 50% calc(var(--hero-photo-w) * -0.12);
+    /* Eased stops so the edge fades softly instead of in a visible band. */
+    --hero-photo-fade: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.08) 5%,
+      rgba(0, 0, 0, 0.25) 11%,
+      rgba(0, 0, 0, 0.5) 18%,
+      rgba(0, 0, 0, 0.75) 25%,
+      rgba(0, 0, 0, 0.92) 31%,
+      #000 36%,
+      #000 64%,
+      rgba(0, 0, 0, 0.92) 69%,
+      rgba(0, 0, 0, 0.75) 75%,
+      rgba(0, 0, 0, 0.5) 82%,
+      rgba(0, 0, 0, 0.25) 89%,
+      rgba(0, 0, 0, 0.08) 95%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    -webkit-mask-image: var(--hero-photo-fade);
+    mask-image: var(--hero-photo-fade);
   }
 
   .hero-overlay {
