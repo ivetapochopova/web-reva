@@ -502,11 +502,11 @@ ul, ol { list-style: none; }
     /* Photo height shrinks on short screens (cropped from the bottom) so the
        headline, text and both CTAs fit on the first screen. The reserve is
        the header plus the text block, minus the part that overlaps the photo. */
-    --hero-photo-h: max(220px, min(112vw, 640px, calc(100svh - 380px)));
+    --hero-photo-h: max(220px, min(112vw, 640px, calc(100svh - 395px)));
     /* Height of the fixed site header, so the photo starts below it. */
     --hero-photo-top: 84px;
     /* How far the text block reaches up over the photo's faded bottom. */
-    --hero-photo-overlap: 70px;
+    --hero-photo-overlap: 45px;
     flex-direction: column;
     justify-content: flex-start;
     min-height: auto;
@@ -527,7 +527,7 @@ ul, ol { list-style: none; }
      and its left/right edges fade into the dark background. Shifting it up
      trims the empty wall above the head. */
   .hero-bg-img {
-    --hero-photo-w: 84vw;
+    --hero-photo-w: 76vw;
     width: var(--hero-photo-w);
     height: 100%;
     object-position: 50% calc(var(--hero-photo-w) * -0.12);
@@ -619,7 +619,7 @@ ul, ol { list-style: none; }
   }
 
   .hero-content .hero-h2-second {
-    margin-top: 0.4em;
+    margin-top: 0;
   }
 }
 
