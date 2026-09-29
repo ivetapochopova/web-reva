@@ -21,8 +21,8 @@
 
 # ==========================================
 # CACHE V PROHLÍŽEČI (Browser caching)
-# Obrázky a fonty: 1 rok. CSS a JS: 1 týden (soubory nemají verzi v názvu,
-# takže změny se u návštěvníků projeví nejpozději do týdne). HTML: 1 hodina.
+# Obrázky a fonty: 1 rok. CSS a JS: 1 týden. Odkazy na style.css a script.js
+# mají v HTML verzi (?v=N) – po změně CSS/JS zvýšit N ve všech stránkách. HTML: 1 hodina.
 # ==========================================
 <IfModule mod_expires.c>
     ExpiresActive On
